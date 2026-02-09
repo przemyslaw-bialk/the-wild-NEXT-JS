@@ -2,6 +2,10 @@ import CabinList from "../_components/CabinList";
 import { Suspense } from "react";
 import Spinner from "../_components/Spinner";
 
+// to get dynamic data and force revalidation for APP route
+// in seconds. This one makes this enterie page to re-render
+export const revalidate = 15;
+
 export default function Page() {
   return (
     <div>

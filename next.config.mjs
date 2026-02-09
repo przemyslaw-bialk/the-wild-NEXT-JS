@@ -9,6 +9,8 @@ const nextConfig = {
       },
     ],
   },
+  // FOR STATIC
+  // output: "export",
 };
 
 export default nextConfig;
