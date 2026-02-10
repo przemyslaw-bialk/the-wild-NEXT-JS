@@ -1,12 +1,17 @@
 import CabinList from "../_components/CabinList";
 import { Suspense } from "react";
 import Spinner from "../_components/Spinner";
+import Filter from "../_components/Filter";
 
 // to get dynamic data and force revalidation for APP route
 // in seconds. This one makes this enterie page to re-render
 export const revalidate = 15;
 
-export default function Page() {
+// searchParams is available only in page
+export default function Page({ searchParams }) {
+  console.log(searchParams);
+
+  const filter = searchParams?.capacity ?? "all";
   return (
     <div>
       <h1 className="text-4xl mb-5 text-accent-400 font-medium">
@@ -20,8 +25,12 @@ export default function Page() {
         away from home. The perfect spot for a peaceful, calm vacation. Welcome
         to paradise.
       </p>
-      <Suspense fallback={<Spinner />}>
-        <CabinList />
+      <div className=" flex justify-end mb-8">
+        <Filter />
+      </div>
+      {/* add key to render spinner */}
+      <Suspense fallback={<Spinner />} key={filter}>
+        <CabinList filter={filter} />
       </Suspense>
     </div>
   );
