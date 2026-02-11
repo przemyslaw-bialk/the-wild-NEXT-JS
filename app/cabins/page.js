@@ -2,10 +2,10 @@ import CabinList from "../_components/CabinList";
 import { Suspense } from "react";
 import Spinner from "../_components/Spinner";
 import Filter from "../_components/Filter";
+import ReservationReminder from "../_components/ReservationReminder";
 
 // to get dynamic data and force revalidation for APP route
 // in seconds. This one makes this enterie page to re-render
-export const revalidate = 15;
 
 // searchParams is available only in page
 export default function Page({ searchParams }) {
@@ -31,6 +31,7 @@ export default function Page({ searchParams }) {
       {/* add key to render spinner */}
       <Suspense fallback={<Spinner />} key={filter}>
         <CabinList filter={filter} />
+        <ReservationReminder />
       </Suspense>
     </div>
   );
